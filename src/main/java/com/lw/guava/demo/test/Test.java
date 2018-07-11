@@ -1,4 +1,4 @@
-package com.lw.guava.demo.Test;
+package com.lw.guava.demo.test;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Ordering;
@@ -28,9 +28,16 @@ public class Test {
         union.forEach(scoreRecord -> System.out.println(scoreRecord));
         Ordering<Comparable> natural = Ordering.natural();
         List<ScoreRecord> list = Lists.newArrayList(union);
-        Collections.sort(list,new Sortclass());
+        Comparator<ScoreRecord> byTestDate = new Comparator<ScoreRecord>() {
+            @Override
+            public int compare(final ScoreRecord p1, final ScoreRecord p2) {
+                return p1.getTestDate().compareTo(p2.getTestDate());
+            }
+        };
+        List<ScoreRecord> list1 = Ordering.from(byTestDate).reverse().sortedCopy(list);
+        // Collections.sort(list,new Sortclass());
         System.out.println("并集排序后：");
-        list.forEach(scoreRecord -> System.out.println(scoreRecord));
+        list1.forEach(scoreRecord -> System.out.println(scoreRecord));
     }
 
     static class Sortclass implements Comparator {
