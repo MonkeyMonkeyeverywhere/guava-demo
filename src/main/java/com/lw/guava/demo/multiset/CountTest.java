@@ -1,6 +1,7 @@
 package com.lw.guava.demo.multiset;
 
 import com.google.common.collect.HashMultiset;
+import com.google.common.collect.Multiset;
 
 import java.util.Set;
 
@@ -14,6 +15,8 @@ public class CountTest {
             sets.add(s);
         }
         Set<String> set = sets.elementSet();
+        Set<Multiset.Entry<String>> entries = sets.entrySet();
         set.forEach(s -> System.out.println(s+"--->"+sets.count(s)));
+        entries.forEach(s -> System.out.println(s.toString()));
     }
 }

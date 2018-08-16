@@ -6,7 +6,7 @@ import com.google.common.collect.Multimap;
 import java.util.*;
 
 public class multimapTest {
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         Map<String,String> cours =new HashMap<String,String>();
         //加入测试数据
         cours.put("改革开放", "邓爷爷");
@@ -30,7 +30,6 @@ public class multimapTest {
             teachers.put(value, key);
         }
 
-
         //查看Multimap
         Set<String> keyset =teachers.keySet();
         for(String key:keyset){
@@ -38,6 +37,22 @@ public class multimapTest {
             System.out.println(key+"-->"+col);
         }
 
+
+    }*/
+
+    public static void main(String[] args) {
+        Multimap<String,String> multimap = ArrayListMultimap.create();
+        multimap.put("lw","语文");
+        multimap.put("lw","数学");
+        multimap.put("lw","英语");
+        multimap.put("qc","地理");
+        multimap.put("qc","思想品德");
+        multimap.put("qc","历史");
+        multimap.put("hdb","生物");
+        multimap.put("hdb","化学");
+
+        Collection<Map.Entry<String, String>> entries = multimap.entries();
+        entries.stream().forEach(s-> System.out.println(multimap.get(s.getKey())));
 
     }
 }
